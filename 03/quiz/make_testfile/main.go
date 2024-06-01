@@ -28,4 +28,13 @@ func main(){
 	defer file.Close()
 
 	io.Copy(file, reader)
+	
+	//smaple
+	file2, err := os.Create("rand.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file2.Close()
+	io.CopyN(file2, rand.Reader, 1024)
+	
 }
