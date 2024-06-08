@@ -63,6 +63,7 @@ func processSession(conn net.Conn) {
 			response.Body = io.NopCloser(strings.NewReader(content))
 			response.ContentLength = int64(len(content))
 		}
+		fmt.Printf("response: %+v\n ", response)
 		response.Write(conn)
 	}
 }
