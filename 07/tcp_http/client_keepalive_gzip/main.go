@@ -29,6 +29,7 @@ func main() {
 			}
 			fmt.Printf("Access: %d\n", current)
 		}
+		fmt.Printf("conn: %+v\n ", conn)
 		request, err := http.NewRequest(
 			"POST",
 			"http://localhost:8888",
@@ -49,6 +50,8 @@ func main() {
 			conn = nil
 			continue
 		}
+		
+		fmt.Printf("response: %+v\n ", response)
 		
 		dump, err := httputil.DumpResponse(response, false)
 		if err != nil {
