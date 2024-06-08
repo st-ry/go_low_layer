@@ -6,7 +6,6 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net"
 	"net/http"
 	"net/http/httputil"
@@ -56,12 +55,12 @@ func processSession(conn net.Conn) {
 			writer := gzip.NewWriter(&buffer)
 			io.WriteString(writer, content)
 			writer.Close()
-			response.Body = ioutil.NopCloser(&buffer)
+			response.Body = io.NopCloser(&buffer)
 			response.ContentLength = int64(buffer.Len())
 			response.Header.Set("Content-Encoding", "gzip")
 		} else {
 			content := "Hello World\n"
-			response.Body = ioutil.NopCloser(strings.NewReader(content))
+			response.Body = io.NopCloser(strings.NewReader(content))
 			response.ContentLength = int64(len(content))
 		}
 		response.Write(conn)
