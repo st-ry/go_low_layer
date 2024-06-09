@@ -53,7 +53,7 @@ func processSession(conn net.Conn) {
 		}
 		fmt.Println(string(dump))
 		//write response
-		fmt.Fprintf(conn, strings.Join([]string{
+		fmt.Fprint(conn, strings.Join([]string{
 			"HTTP/1.1 200 OK",
 			"Content-Type: text/plain",
 			"Transfer-Encoding: chunked",
