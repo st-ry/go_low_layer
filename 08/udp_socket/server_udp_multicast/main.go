@@ -16,8 +16,9 @@ func main(){
 	start := time.Now()
 	wait := 10 * time.Second - time.Nanosecond*time.Duration(start.UnixNano()%(10*1000*1000*1000))
 	time.Sleep(wait)
-	ticker := time.Tick(10 * time.Second)
-	for now := range ticker {
+	ticker := time.NewTicker(10 * time.Second)
+	defer ticker.Stop()
+	for now := range ticker.C{
 		conn.Write([]byte(now.String()))
 		fmt.Println("Tick: ", now.String())
 	}
