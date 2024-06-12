@@ -6,6 +6,7 @@ import (
 	"os"
 )
 
+//create
 func open() {
 	file, err := os.Create("textfile.txt")
 	if err != nil {
@@ -26,7 +27,17 @@ func read() {
 	io.Copy(os.Stdout, file)
 }
 
+func append() {
+	file, err := os.OpenFile("textfile.txt", os.O_RDWR|os.O_APPEND, 0666)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	io.WriteString(file, "Appended content\n")
+}
+
 func main(){
 	open()
 	read()
+	append()
 }
