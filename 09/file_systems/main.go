@@ -36,6 +36,11 @@ func append() {
 	io.WriteString(file, "Appended content\n")
 }
 
+func makeDir() {
+	os.Mkdir("setting", 0644)
+	os.MkdirAll("setting/myapp/networksettings", 0644)
+}
+
 func main(){
 	open()
 	read()
