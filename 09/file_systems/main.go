@@ -45,4 +45,5 @@ func main(){
 	open()
 	read()
 	append()
+	makeDir()
 }
