@@ -14,4 +14,8 @@ func main() {
 		panic(err)
 	}
 	//map memory
+	f, err := os.OpenFile(testPath, os.O_RDWR, 0644)
+	if err != nil {
+		panic(err)
+	}
 }
